@@ -21,15 +21,34 @@ $f3->route('GET /', function() {
 });
 
 // pet order route
-$f3->route('GET /order', function() {
+$f3->route('GET|POST /order', function($f3) {
 
-//    if($_SERVER["REQUEST_METHOD"] == "POST") {
-//
-//    }
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        $pet = $_POST['pet'];
+        $color = $_POST['color'];
+
+        if(empty($pet)) {
+            echo "Please supply a pet type";
+        } else {
+            $f3->set('SESSION.pet', $pet);
+            $f3->set('SESSION.color', $color);
+
+            $f3->reroute('summary');
+        }
+
+
+    }
     // render a view page
     $view = new Template();
     echo $view->render('views/pet-order.html');
 
+});
+
+$f3->route('GET /summary', function() {
+//     echo '<h1>Pet Home</h1>';
+    // render a view page
+    $view = new Template();
+    echo $view->render('views/order-summary.html');
 });
 
 // run fat-free
