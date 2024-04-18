@@ -20,5 +20,17 @@ $f3->route('GET /', function() {
 
 });
 
+// pet order route
+$f3->route('GET /order', function() {
+
+//    if($_SERVER["REQUEST_METHOD"] == "POST") {
+//
+//    }
+    // render a view page
+    $view = new Template();
+    echo $view->render('views/pet-order.html');
+
+});
+
 // run fat-free
 $f3->run();
