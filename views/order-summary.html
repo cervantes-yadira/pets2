@@ -8,7 +8,26 @@
     <title>Summary</title>
 </head>
 <body>
-<h1>Order Summary</h1>
-<h3>Thank you for ordering a {{ @SESSION.pet1->getColor() }} {{ @SESSION.pet1->getAnimal() }}!</h3>
+    <h1>Order Summary</h1>
+    <h3>Thank you for ordering a {{ @SESSION.pet1->getColor() }}, {{ @SESSION.pet1->getAnimal() }}!</h3> <br>
+
+    <check if="{{ get_class(@SESSION.pet1) === 'StuffedPet' }}">
+        <true>
+            <ul>
+                <li><label>Size: </label>{{ @SESSION.pet->getSize() }}</li>
+                <li><label>Stuffing Type: </label>{{ @SESSION.pet->getStuffingType() }}</li>
+                <li><label>Material: </label>{{ @SESSION.pet->getMaterial() }}</li>
+            </ul>
+        </true>
+        <false>
+            <p>{{ get_class(@SESSION.pet1) }}</p>
+            <h3>Accessories</h3>
+            <ul>
+                <repeat group="{{ @SESSION.pet1->getAccessories() }}" value="{{ @accessory }}">
+                    <li value="{{ @accessory }}">{{ @accessory }}</li>
+                </repeat>
+            </ul>
+        </false>
+    </check>
 </body>
 </html>
