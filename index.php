@@ -26,12 +26,18 @@ $f3->route('GET|POST /order', function($f3) {
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $pet = $_POST['pet'];
         $color = $_POST['color'];
+        $type = $_POST['type'];
 
         if(empty($pet)) {
-            echo "Please supply a pet type";
+            echo "Please supply a pet animal type";
         } else {
-            $f3->set('SESSION.pet', $pet);
-            $f3->set('SESSION.color', $color);
+            if ($type == "robotic"){
+                $pet1 = new RoboticPet($pet, $color);
+            }else {
+                $pet1 = new StuffedPet($pet, $color);
+            }
+
+            $f3->set('SESSION.pet1', $pet1);
 
             $f3->reroute('summary');
         }

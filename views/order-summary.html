@@ -9,6 +9,6 @@
 </head>
 <body>
 <h1>Order Summary</h1>
-<h3>Thank you for ordering a {{ @SESSION.color }} {{ @SESSION.pet }}!</h3>
+<h3>Thank you for ordering a {{ @SESSION.pet1->getColor() }} {{ @SESSION.pet1->getAnimal() }}!</h3>
 </body>
 </html>
