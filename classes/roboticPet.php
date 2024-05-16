@@ -2,13 +2,11 @@
 class RoboticPet extends Pet
 {
     private $_accessories;
-    private $_material;
 
-    function __construct($animal="", $color="", $accessories="", $material="")
+    function __construct($animal="", $color="", $accessories="")
     {
         parent::__construct($animal, $color);
         $this->_accessories = $accessories;
-        $this->_material = $material;
     }
 
     /**
@@ -27,21 +25,6 @@ class RoboticPet extends Pet
         $this->_accessories = $accessories;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getMaterial()
-    {
-        return $this->_material;
-    }
-
-    /**
-     * @param mixed $material
-     */
-    public function setMaterial($material)
-    {
-        $this->_material = $material;
-    }
 
     function repair()
     {

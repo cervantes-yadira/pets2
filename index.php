@@ -39,15 +39,24 @@ $f3->route('GET|POST /order', function($f3) {
 
             $f3->set('SESSION.pet1', $pet1);
 
-            $f3->reroute('summary');
+            ($type == "robotic") ? $f3->reroute('robotic-order'): $f3->reroute('stuffed-order');;
         }
-
-
     }
     // render a view page
     $view = new Template();
     echo $view->render('views/pet-order.html');
 
+});
+
+$f3->route('GET|POST /stuffed-order', function () {
+    $view = new Template();
+    echo $view->render('views/stuffed-order.html');
+});
+
+
+$f3->route('GET|POST /robotic-order', function () {
+    $view = new Template();
+    echo $view->render('views/robotic-order.html');
 });
 
 $f3->route('GET /summary', function() {
