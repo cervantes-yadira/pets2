@@ -22,7 +22,6 @@ $f3->route('GET /', function() {
 
 // pet order route
 $f3->route('GET|POST /order', function($f3) {
-
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $pet = $_POST['pet'];
         $color = $_POST['color'];

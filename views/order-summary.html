@@ -14,13 +14,12 @@
     <check if="{{ get_class(@SESSION.pet1) === 'StuffedPet' }}">
         <true>
             <ul>
-                <li><label>Size: </label>{{ @SESSION.pet->getSize() }}</li>
-                <li><label>Stuffing Type: </label>{{ @SESSION.pet->getStuffingType() }}</li>
-                <li><label>Material: </label>{{ @SESSION.pet->getMaterial() }}</li>
+                <li><label>Size: </label>{{ @SESSION.pet1->getSize() }}</li>
+                <li><label>Stuffing Type: </label>{{ @SESSION.pet1->getStuffingType() }}</li>
+                <li><label>Material: </label>{{ @SESSION.pet1->getMaterial() }}</li>
             </ul>
         </true>
         <false>
-            <p>{{ get_class(@SESSION.pet1) }}</p>
             <h3>Accessories</h3>
             <ul>
                 <repeat group="{{ @SESSION.pet1->getAccessories() }}" value="{{ @accessory }}">
